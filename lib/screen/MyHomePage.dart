@@ -1,49 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:texas_bit/screen/newsDetails.dart';
+import 'package:texas_bit/widgets/newsCard.dart';
+import 'package:http/http.dart' as http;
+class MyHomePage extends StatefulWidget {
 
-class MyHomePage extends StatelessWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  @override
+  initState(){
+    onGetNews();
+  }
+
+  onGetNews() async {
+    try {
+      var url = Uri.https('newsapi.org',
+          '/v2/everything?q=tesla&from=2023-01-08&sortBy=publishedAt&apiKey=9b017d9c85e140f58bd094de3f1b99d3');
+      var response = await http.get(url);
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+    }catch(e){
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text('News'),),
       body: ListView(
         children: [
           ...[1,2,2,2,2,2,2,2,2,2].map((e) =>
-              Container(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                        flex: 2,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text("Student cannot Learn due to lack of Iternet",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w800
-                              ),
-                            ),
-                            Text("Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet",
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400
-                              ),
-                            ),
-                            Text("GautamNews.com", style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.grey
-                            ),),
-                          ],
-                        )),
-                    Expanded(
-                        flex: 1,
-                        child: Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-QTCe6MUjUm46ek4mCU7w03Dw5Pth03NKmA&usqp=CAU")),
-                  ],
-                ),
-              ),
+          InkWell(
+              onTap: (){
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context)=>NewsDetails()));
+              },
+              child: NewsCard()),
+
           )
 
         ],
