@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:texas_bit/model/News.dart';
 
 class NewsDetails extends StatelessWidget {
+
+  News news;
+  NewsDetails({required this.news});
 
 
   final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
@@ -38,7 +42,7 @@ class NewsDetails extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 20,),
-                Text("Student cannot Learn due to lack of Iternet",
+                Text(news.title,
                   style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.w800
@@ -47,12 +51,12 @@ class NewsDetails extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("GautamNews.com", style: TextStyle(
+                    Text(news.author, style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w800,
                         color: Colors.grey
                     ),),
-                    Text("14 feb 2023,Tuesday", style: TextStyle(
+                    Text(news.publishedAt, style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w800,
                         color: Colors.grey
@@ -60,9 +64,9 @@ class NewsDetails extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 20,),
-                Center(child: Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-QTCe6MUjUm46ek4mCU7w03Dw5Pth03NKmA&usqp=CAU")),
+                Center(child: Image.network(news.urlToImage)),
                 SizedBox(height: 20,),
-                Text("Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of \nIternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to \nlack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot \nLearn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet Student cannot Learn due to lack of Iternet",
+                  Text(news.description,
                   style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400
