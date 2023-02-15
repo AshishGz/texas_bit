@@ -1,8 +1,20 @@
  import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:texas_bit/providers/mainProvider.dart';
+import 'package:texas_bit/quizApp/QuizProvider.dart';
+import 'package:texas_bit/quizApp/quizHome,.dart';
 import 'package:texas_bit/screen/MyHomePage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => MainProvider()),
+        ChangeNotifierProvider(create: (_) => QuizProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -11,6 +23,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -25,7 +38,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home:  MyHomePage(),
+      home:  QuizHome(),
     );
   }
 }

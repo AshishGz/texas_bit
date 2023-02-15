@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:texas_bit/model/News.dart';
+import 'package:texas_bit/providers/mainProvider.dart';
 import 'package:texas_bit/screen/newsDetails.dart';
 import 'package:texas_bit/widgets/newsCard.dart';
 import 'package:http/http.dart' as http;
@@ -36,8 +38,18 @@ List<News> _news=[];
 
   @override
   Widget build(BuildContext context) {
+    final mainProvider=Provider.of<MainProvider>(context);
     return Scaffold(
-      appBar: AppBar(title: Text('News'),),
+      appBar: AppBar(title: Text(mainProvider.userLocal=='en'?'News':'समाचार'),
+      actions: [
+        InkWell(
+            onTap: (){
+              mainProvider.setUserLocal
+                (mainProvider.userLocal=='en'?'ne':'en');
+            },
+            child: Icon(Icons.language))
+      ],
+      ),
       body: ListView(
         children: [
           ..._news.map((e) =>
